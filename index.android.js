@@ -10,6 +10,8 @@ import React, {
   Text,
   View,
   Image,
+  ToolbarAndroid,
+  StatusBar,
 } from 'react-native';
 
 var SpareRidesTransit = React.createClass({
@@ -46,16 +48,15 @@ var SpareRidesTransit = React.createClass({
 
   render: function() {
     return (
-      <View>
-        <Text>
-          <Text style={styles.title}>Initial position: </Text>
-          {this.state.Lat}
-          {this.state.Lon}
-        </Text>
-        <Text>
-          <Text style={styles.title}>Current position: </Text>
-          {JSON.stringify(this.state.lastPosition.coords)}
-        </Text>
+      <View 
+        style={styles.container}>
+       <StatusBar
+         backgroundColor="#008028"
+         barStyle="light-content" />
+        <ToolbarAndroid
+          style={styles.toolbar}
+          title="Transit App"
+          titleColor="white" />
         <Image 
         source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x400'}}
         style={{width: 640, height: 400}} />
@@ -65,6 +66,15 @@ var SpareRidesTransit = React.createClass({
 });
 
 var styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+
+  },
+  toolbar: {
+    height: 56,
+    backgroundColor: '#009831',
+
+  },
   title: {
     fontWeight: '500',
   },
