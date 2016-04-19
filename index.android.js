@@ -21,6 +21,8 @@ var transitData = require('./buses.json');
 
 var buses = transitData.buses;
 
+var bus = buses[0];
+
 var BusList = React.createClass({
 
   //toDO: make this randomly pick from buses in Bus List json
@@ -28,7 +30,6 @@ var BusList = React.createClass({
 
   render: function() {
 
-    var bus = buses[Math.floor(Math.random()*buses.length)];
 
     return (
       <View style={styles.busListItem}>
@@ -87,12 +88,12 @@ var SpareRidesTransit = React.createClass({
        <StatusBar
          backgroundColor="#008028"
          barStyle="light-content" />
-        <View
+        <View //opting to not use the react native toolbar text input wasn't working
           style={styles.toolbar} >
           <Image
             resizeMode='contain'
             source={{uri: 'http://www.woo22.com/images/search.png'}}
-            style={{flex: 0.2, width: 35, height: 35, marginTop: 10,}} />
+            style={{flex: 0.2, width: 35, height: 35, marginTop: 15,}} />
           <TextInput
             style={styles.search}
             placeholder="Search or Address"
@@ -101,6 +102,15 @@ var SpareRidesTransit = React.createClass({
             onChangeText={(text) => this.setState({text})}
             value={this.state.text}
           />
+          <Image
+            resizeMode='contain'
+            source={{uri: 'http://i.imgur.com/JyNifci.png'}}
+            style={{flex: 0.2, width: 35, height: 35, marginTop: 15,}} />
+          <Image
+            resizeMode='contain'
+            source={{uri: 'http://ai-i3.infcdn.net/icons_siandroid/png/200/2416/2416616.png'}}
+            style={{flex: 0.2, width: 35, height: 35, marginTop: 15,}} />
+
         </View>
         <ScrollView
           style={styles.scroller}
@@ -127,6 +137,10 @@ var SpareRidesTransit = React.createClass({
 
     if (imageHeight < 100 ) {
       imageHeight = 100
+    }
+
+    if (imageHeight > 400 ) {
+      imageHeight = 400
     }
 
     this.setState({imageHeight});
