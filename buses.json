@@ -1,0 +1,79 @@
+{
+	"buses":[
+		{
+			"lineID": "144", 			
+			"is_live": "false",
+			"is_favourite": "false",
+			"incoming": { 
+				"destination": "Metrotown",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "2",
+			},
+			"outgoing": { 
+				"destination": "SFU",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "5",
+			},
+		},
+		{
+			"lineID": "144", 			
+			"is_live": "false",
+			"is_favourite": "false",
+			"incoming": { 
+				"destination": "Metrotown",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "2",
+			},
+			"outgoing": { 
+				"destination": "SFU",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "5",
+			},
+		},
+		{
+			"lineID": "144", 			
+			"is_live": "false",
+			"is_favourite": "false",
+			"incoming": { 
+				"destination": "Metrotown",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "2",
+			},
+			"outgoing": { 
+				"destination": "SFU",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "5",
+			},
+		},
+		{
+			"lineID": "144", 			
+			"is_live": "false",
+			"is_favourite": "false",
+			"incoming": { 
+				"destination": "Metrotown",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "2",
+			},
+			"outgoing": { 
+				"destination": "SFU",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "5",
+			},
+		},
+		{
+			"lineID": "144", 			
+			"is_live": "false",
+			"is_favourite": "false",
+			"incoming": { 
+				"destination": "Metrotown",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "2",
+			},
+			"outgoing": { 
+				"destination": "SFU",
+				"closestStop": "Burris/Canada Way",
+				"ETA": "5",
+			},
+		},
+	]
+}

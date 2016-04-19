@@ -32,6 +32,27 @@ var MOCKED_TRANSIT_DATA = [
   },
 ];
 
+var transitData = require('./buses.json');
+var bus = transitData.buses[0];
+
+var BusList = React.createClass({
+
+  render: function() {
+    return (
+      <View style={styles.busList}>
+        <View style={styles.leftList}>
+          <Text style={styles.busText}>{bus.lineID}</Text>
+          <Text style={styles.busText}>{bus.incoming.destination}</Text>
+          <Text style={styles.busText}>{bus.incoming.closestStop}</Text>
+        </View>
+        <View style={styles.rightList}>
+          <Text style={styles.busText}>{bus.incoming.ETA}</Text>
+        </View>
+      </View>
+    );
+  },
+});
+
 
 var SpareRidesTransit = React.createClass({
   watchID: (null: ?number),
@@ -66,8 +87,6 @@ var SpareRidesTransit = React.createClass({
   },
 
   render: function() {
-    var bus = MOCKED_TRANSIT_DATA[0];
-
     return (
       <View
         style={styles.page}>
@@ -81,19 +100,10 @@ var SpareRidesTransit = React.createClass({
         <Image 
         source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x200'}}
         style={{width: 640, height: 200}} />
-        <View style={styles.busList}>
-          <View style={styles.leftList}>
-            <Text style={styles.busText}>{bus.lineID}</Text>
-            <Text style={styles.busText}>{bus.incoming.destination}</Text>
-            <Text style={styles.busText}>{bus.incoming.closestStop}</Text>
-          </View>
-          <View style={styles.rightList}>
-            <Text style={styles.busText}>{bus.incoming.ETA}</Text>
-          </View>
-        </View>
+        <BusList />
       </View>
     );
-  }
+  },
 });
 
 var styles = StyleSheet.create({
