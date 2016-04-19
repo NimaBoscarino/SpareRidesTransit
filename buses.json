@@ -57,7 +57,7 @@
 			"outgoing": { 
 				"destination": "Lougheed Town Ctr",
 				"closestStop": "Burnaby City Hall",
-				"ETA": "now",
+				"ETA": "0",
 			},
 		},
 		{

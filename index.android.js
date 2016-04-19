@@ -33,7 +33,9 @@ var BusList = React.createClass({
 
   //toDO: figure out how to make this iterate through all buses, but not with ListView if possible
   //toDo: make this click to drop down options
-
+  //No I should definitely use a ListView instead of this. I'm thinking that's probably
+  // why gaps show up between the items???
+  // also I should have figured out how to test
   render: function() {
 
     bus = buses[this.props.busIndex];
@@ -41,7 +43,7 @@ var BusList = React.createClass({
     return (
       <Swiper 
         style={styles.swiper}
-        height={100}
+        height={103}
         loop={false}
         >
         <View style={styles.busListItem}>
@@ -177,6 +179,7 @@ var styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     flex: 1,
+    backgroundColor: '#004E85',
   },
 
   busListItem: {
@@ -186,7 +189,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#00619E',
-    borderBottomWidth: 2,
+    borderBottomWidth: 10, //sneaky way of not making gaps too visible
     borderBottomColor: '#004E85',
     elevation: 40,
   },
@@ -242,8 +245,6 @@ var styles = StyleSheet.create({
   },
 
   scroller: {
-
-    flex: 0.9,
 
   },
 
