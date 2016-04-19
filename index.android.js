@@ -14,6 +14,25 @@ import React, {
   StatusBar,
 } from 'react-native';
 
+var MOCKED_TRANSIT_DATA = [
+  {
+    is_live: 'false',
+    is_favourite: 'false',
+    lineID: '144', 
+    incoming: { 
+      destination: 'Metrotown',
+      closestStop: 'Burris/Canada Way',
+      ETA: '2',
+    },
+    outgoing: { 
+      destination: 'SFU',
+      closestStop: 'Burris/Canada Way',
+      ETA: '5',
+    },
+  },
+];
+
+
 var SpareRidesTransit = React.createClass({
   watchID: (null: ?number),
 
@@ -47,9 +66,11 @@ var SpareRidesTransit = React.createClass({
   },
 
   render: function() {
+    var bus = MOCKED_TRANSIT_DATA[0];
+
     return (
-      <View 
-        style={styles.container}>
+      <View
+        style={styles.page}>
        <StatusBar
          backgroundColor="#008028"
          barStyle="light-content" />
@@ -58,26 +79,43 @@ var SpareRidesTransit = React.createClass({
           title="Transit App"
           titleColor="white" />
         <Image 
-        source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x400'}}
-        style={{width: 640, height: 400}} />
+        source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x200'}}
+        style={{width: 640, height: 200}} />
+        <View style={styles.busList}>
+          <Text style={styles.busText}>{bus.lineID}</Text>
+          <Text style={styles.busText}>{bus.incoming.destination}</Text>
+        </View>
       </View>
     );
   }
 });
 
 var styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-
+  page: {
+    flex: 1,
   },
+  busList: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#00619E',
+  },
+
   toolbar: {
     height: 56,
     backgroundColor: '#009831',
 
   },
+
   title: {
     fontWeight: '500',
   },
+
+  busText: {
+
+    color: 'white',
+
+  }
 });
 
 
