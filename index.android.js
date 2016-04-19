@@ -12,6 +12,8 @@ import React, {
   Image,
   ToolbarAndroid,
   StatusBar,
+  ListView,
+  ScrollView,
 } from 'react-native';
 
 var MOCKED_TRANSIT_DATA = [
@@ -39,7 +41,7 @@ var BusList = React.createClass({
 
   render: function() {
     return (
-      <View style={styles.busList}>
+      <View style={styles.busListItem}>
         <View style={styles.leftList}>
           <Text style={styles.busText}>{bus.lineID}</Text>
           <Text style={styles.busText}>{bus.incoming.destination}</Text>
@@ -100,7 +102,16 @@ var SpareRidesTransit = React.createClass({
         <Image 
         source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x200'}}
         style={{width: 640, height: 200}} />
-        <BusList />
+        <ScrollView>
+          <BusList />
+          <BusList />
+          <BusList />
+          <BusList />
+          <BusList />
+          <BusList />
+          <BusList />
+          <BusList />
+        </ScrollView>
       </View>
     );
   },
@@ -110,12 +121,15 @@ var styles = StyleSheet.create({
   page: {
     flex: 1,
   },
-  busList: {
-    flex: 1,
+  busListItem: {
+    paddingTop: 15,
+    paddingBottom: 15,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#00619E',
+    borderBottomWidth: 2,
+    borderBottomColor: '#004E85',
   },
 
   leftList: {
