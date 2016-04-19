@@ -82,8 +82,14 @@ var SpareRidesTransit = React.createClass({
         source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x200'}}
         style={{width: 640, height: 200}} />
         <View style={styles.busList}>
-          <Text style={styles.busText}>{bus.lineID}</Text>
-          <Text style={styles.busText}>{bus.incoming.destination}</Text>
+          <View style={styles.leftList}>
+            <Text style={styles.busText}>{bus.lineID}</Text>
+            <Text style={styles.busText}>{bus.incoming.destination}</Text>
+            <Text style={styles.busText}>{bus.incoming.closestStop}</Text>
+          </View>
+          <View style={styles.rightList}>
+            <Text style={styles.busText}>{bus.incoming.ETA}</Text>
+          </View>
         </View>
       </View>
     );
@@ -96,9 +102,22 @@ var styles = StyleSheet.create({
   },
   busList: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#00619E',
+  },
+
+  leftList: {
+    flex: 0.7,
+    marginLeft: 15,
+  },
+
+  rightList: {
+    flex: 0.3,
+    alignItems: 'flex-end',
+    marginRight: 15,
+
   },
 
   toolbar: {
