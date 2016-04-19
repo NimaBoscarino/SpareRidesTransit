@@ -14,6 +14,7 @@ import React, {
   StatusBar,
   ListView,
   ScrollView,
+  TextInput,
 } from 'react-native';
 
 var MOCKED_TRANSIT_DATA = [
@@ -96,10 +97,21 @@ var SpareRidesTransit = React.createClass({
        <StatusBar
          backgroundColor="#008028"
          barStyle="light-content" />
-        <ToolbarAndroid
-          style={styles.toolbar}
-          title="Transit App"
-          titleColor="white" />
+        <View
+          style={styles.toolbar} >
+          <Image
+            resizeMode='contain'
+            source={{uri: 'http://www.woo22.com/images/search.png'}}
+            style={{flex: 0.2, width: 35, height: 35, marginTop: 10,}} />
+          <TextInput
+            style={styles.search}
+            placeholder="Search or Address"
+            placeholderTextColor="white"
+            underlineColorAndroid="transparent"
+            onChangeText={(text) => this.setState({text})}
+            value={this.state.text}
+          />
+        </View>
         <ScrollView>
 
           <Image 
@@ -148,6 +160,7 @@ var styles = StyleSheet.create({
   },
 
   toolbar: {
+    flexDirection: 'row',
     height: 56,
     backgroundColor: '#009831',
     elevation: 30,
@@ -178,6 +191,12 @@ var styles = StyleSheet.create({
     fontSize: 12,
     color: 'white',
 
+  },
+
+  search: {
+    flex: 0.8,
+    color: 'white',
+    fontSize: 25,
   },
 });
 
