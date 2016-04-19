@@ -17,6 +17,8 @@ import React, {
   TextInput,
 } from 'react-native';
 
+var Swiper = require('react-native-swiper')
+
 var transitData = require('./buses.json');
 
 var buses = transitData.buses;
@@ -25,24 +27,41 @@ var bus = buses[0];
 
 var BusList = React.createClass({
 
-  //toDO: make this randomly pick from buses in Bus List json
+  //toDO: figure out how to make this iterate through all buses, but not with ListView if possible
   //toDo: make this click to drop down options
 
   render: function() {
 
 
     return (
-      <View style={styles.busListItem}>
-        <View style={styles.leftList}>
-          <Text style={styles.busTextBig}>{bus.lineID}</Text>
-          <Text style={styles.busTextMed}>{bus.incoming.destination}</Text>
-          <Text style={styles.busTextSmall}>{bus.incoming.closestStop}</Text>
+      <Swiper 
+        style={styles.swiper}
+        height={100}
+        loop={false}
+        >
+        <View style={styles.busListItem}>
+          <View style={styles.leftList}>
+            <Text style={styles.busTextBig}>{bus.lineID}</Text>
+            <Text style={styles.busTextMed}>{bus.incoming.destination}</Text>
+            <Text style={styles.busTextSmall}>{bus.incoming.closestStop}</Text>
+          </View>
+          <View style={styles.rightList}>
+            <Text style={styles.busTextBig}>{bus.incoming.ETA}</Text>
+            <Text style={styles.busTextSmall}>minutes</Text>          
+          </View>
         </View>
-        <View style={styles.rightList}>
-          <Text style={styles.busTextBig}>{bus.incoming.ETA}</Text>
-          <Text style={styles.busTextSmall}>minutes</Text>          
+        <View style={styles.busListItem}>
+          <View style={styles.leftList}>
+            <Text style={styles.busTextBig}>{bus.lineID}</Text>
+            <Text style={styles.busTextMed}>{bus.outgoing.destination}</Text>
+            <Text style={styles.busTextSmall}>{bus.outgoing.closestStop}</Text>
+          </View>
+          <View style={styles.rightList}>
+            <Text style={styles.busTextBig}>{bus.outgoing.ETA}</Text>
+            <Text style={styles.busTextSmall}>minutes</Text>          
+          </View>
         </View>
-      </View>
+      </Swiper>
     );
   },
 });
@@ -222,7 +241,10 @@ var styles = StyleSheet.create({
     flex: 0.9,
 
   },
+
 });
 
 
 AppRegistry.registerComponent('SpareRidesTransit', () => SpareRidesTransit);
+
+
