@@ -23,15 +23,20 @@ var transitData = require('./buses.json');
 
 var buses = transitData.buses;
 
-var bus = buses[0];
-
 var BusList = React.createClass({
+
+  propTypes: {
+
+    busIndex: React.PropTypes.number,
+
+  },
 
   //toDO: figure out how to make this iterate through all buses, but not with ListView if possible
   //toDo: make this click to drop down options
 
   render: function() {
 
+    bus = buses[this.props.busIndex];
 
     return (
       <Swiper 
@@ -138,11 +143,11 @@ var SpareRidesTransit = React.createClass({
           <Image 
           source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?markers=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x400'}}
           style={{height:this.state.imageHeight, resizeMode: 'cover',}} />
-          <BusList />
-          <BusList />
-          <BusList />
-          <BusList />
-          <BusList />
+          <BusList busIndex={0} />
+          <BusList busIndex={1} />
+          <BusList busIndex={2} />
+          <BusList busIndex={3} />
+          <BusList busIndex={4} />
           <View style={styles.busListItem}>
               <Text style={styles.busTextMed}>Show Inactive Lines</Text>
           </View>
