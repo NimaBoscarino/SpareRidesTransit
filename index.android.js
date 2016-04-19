@@ -19,13 +19,17 @@ import React, {
 
 var transitData = require('./buses.json');
 
-var bus = transitData.buses[0];
+var buses = transitData.buses;
 
 var BusList = React.createClass({
 
   //toDO: make this randomly pick from buses in Bus List json
   //toDo: make this click to drop down options
+
   render: function() {
+
+    var bus = buses[Math.floor(Math.random()*buses.length)];
+
     return (
       <View style={styles.busListItem}>
         <View style={styles.leftList}>
@@ -52,6 +56,7 @@ var SpareRidesTransit = React.createClass({
       lastPosition: 'unknown',
       Lat: 'unknown',
       Lon: 'unknown',
+      imageHeight: 400,
     };
   },
 
@@ -97,11 +102,13 @@ var SpareRidesTransit = React.createClass({
             value={this.state.text}
           />
         </View>
-        <ScrollView>
+        <ScrollView
+          style={styles.scroller}
+          onScroll={this.handleScroll} >
 
           <Image 
-          source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x400'}}
-          style={{width: 640, height: 400}} />
+          source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?markers=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x400'}}
+          style={{height:this.state.imageHeight, resizeMode: 'cover',}} />
           <BusList />
           <BusList />
           <BusList />
@@ -114,11 +121,23 @@ var SpareRidesTransit = React.createClass({
       </View>
     );
   },
+
+  handleScroll: function(event: Object) {    
+    var imageHeight = 400 - 5 * event.nativeEvent.contentOffset.y;
+
+    if (imageHeight < 100 ) {
+      imageHeight = 100
+    }
+
+    this.setState({imageHeight});
+  },
+
 });
 
 var styles = StyleSheet.create({
 
   page: {
+    flexDirection: 'column',
     flex: 1,
   },
 
@@ -146,7 +165,7 @@ var styles = StyleSheet.create({
 
   toolbar: {
     flexDirection: 'row',
-    height: 56,
+    flex: 0.1,
     backgroundColor: '#009831',
     elevation: 30,
   },
@@ -182,6 +201,12 @@ var styles = StyleSheet.create({
     flex: 0.8,
     color: 'white',
     fontSize: 25,
+  },
+
+  scroller: {
+
+    flex: 0.9,
+
   },
 });
 
