@@ -105,16 +105,14 @@ var SpareRidesTransit = React.createClass({
           <Image 
           source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x400'}}
           style={{width: 640, height: 400}} />
-          <ScrollView>
-            <BusList />
-            <BusList />
-            <BusList />
-            <BusList />
-            <BusList />
-            <View style={styles.busListItem}>
-                <Text style={styles.busTextMed}>Show Inactive Lines</Text>
-            </View>
-          </ScrollView>
+          <BusList />
+          <BusList />
+          <BusList />
+          <BusList />
+          <BusList />
+          <View style={styles.busListItem}>
+              <Text style={styles.busTextMed}>Show Inactive Lines</Text>
+          </View>
         </ScrollView>
       </View>
     );
@@ -122,9 +120,11 @@ var SpareRidesTransit = React.createClass({
 });
 
 var styles = StyleSheet.create({
+
   page: {
     flex: 1,
   },
+
   busListItem: {
     paddingTop: 15,
     paddingBottom: 15,
@@ -134,6 +134,7 @@ var styles = StyleSheet.create({
     backgroundColor: '#00619E',
     borderBottomWidth: 2,
     borderBottomColor: '#004E85',
+    elevation: 40,
   },
 
   leftList: {
@@ -149,7 +150,7 @@ var styles = StyleSheet.create({
   toolbar: {
     height: 56,
     backgroundColor: '#009831',
-
+    elevation: 30,
   },
 
   title: {
