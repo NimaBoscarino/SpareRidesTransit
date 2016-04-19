@@ -43,12 +43,13 @@ var BusList = React.createClass({
     return (
       <View style={styles.busListItem}>
         <View style={styles.leftList}>
-          <Text style={styles.busText}>{bus.lineID}</Text>
-          <Text style={styles.busText}>{bus.incoming.destination}</Text>
-          <Text style={styles.busText}>{bus.incoming.closestStop}</Text>
+          <Text style={styles.busTextBig}>{bus.lineID}</Text>
+          <Text style={styles.busTextMed}>{bus.incoming.destination}</Text>
+          <Text style={styles.busTextSmall}>{bus.incoming.closestStop}</Text>
         </View>
         <View style={styles.rightList}>
-          <Text style={styles.busText}>{bus.incoming.ETA}</Text>
+          <Text style={styles.busTextBig}>{bus.incoming.ETA}</Text>
+          <Text style={styles.busTextSmall}>minutes</Text>          
         </View>
       </View>
     );
@@ -99,18 +100,21 @@ var SpareRidesTransit = React.createClass({
           style={styles.toolbar}
           title="Transit App"
           titleColor="white" />
-        <Image 
-        source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x200'}}
-        style={{width: 640, height: 200}} />
         <ScrollView>
-          <BusList />
-          <BusList />
-          <BusList />
-          <BusList />
-          <BusList />
-          <BusList />
-          <BusList />
-          <BusList />
+
+          <Image 
+          source={{uri: 'http://maps.googleapis.com/maps/api/staticmap?center=' + this.state.Lat + ', ' + this.state.Lon + '&zoom=15&size=640x400'}}
+          style={{width: 640, height: 400}} />
+          <ScrollView>
+            <BusList />
+            <BusList />
+            <BusList />
+            <BusList />
+            <BusList />
+            <View style={styles.busListItem}>
+                <Text style={styles.busTextMed}>Show Inactive Lines</Text>
+            </View>
+          </ScrollView>
         </ScrollView>
       </View>
     );
@@ -133,15 +137,13 @@ var styles = StyleSheet.create({
   },
 
   leftList: {
-    flex: 0.7,
-    marginLeft: 15,
+    flex: 0.8,
+    paddingLeft: 15,
   },
 
   rightList: {
-    flex: 0.3,
-    alignItems: 'flex-end',
-    marginRight: 15,
-
+    flex: 0.2,
+    alignItems: 'center',
   },
 
   toolbar: {
@@ -154,11 +156,28 @@ var styles = StyleSheet.create({
     fontWeight: '500',
   },
 
-  busText: {
+  busTextBig: {
 
+    fontWeight: 'bold',
+    fontSize: 25,
     color: 'white',
 
-  }
+  },
+
+  busTextMed: {
+
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: 'white',
+
+  },
+
+  busTextSmall: {
+
+    fontSize: 12,
+    color: 'white',
+
+  },
 });
 
 
