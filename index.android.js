@@ -17,29 +17,14 @@ import React, {
   TextInput,
 } from 'react-native';
 
-var MOCKED_TRANSIT_DATA = [
-  {
-    is_live: 'false',
-    is_favourite: 'false',
-    lineID: '144', 
-    incoming: { 
-      destination: 'Metrotown',
-      closestStop: 'Burris/Canada Way',
-      ETA: '2',
-    },
-    outgoing: { 
-      destination: 'SFU',
-      closestStop: 'Burris/Canada Way',
-      ETA: '5',
-    },
-  },
-];
-
 var transitData = require('./buses.json');
+
 var bus = transitData.buses[0];
 
 var BusList = React.createClass({
 
+  //toDO: make this randomly pick from buses in Bus List json
+  //toDo: make this click to drop down options
   render: function() {
     return (
       <View style={styles.busListItem}>
@@ -106,7 +91,7 @@ var SpareRidesTransit = React.createClass({
           <TextInput
             style={styles.search}
             placeholder="Search or Address"
-            placeholderTextColor="white"
+            placeholderTextColor="rgba(255, 255, 255, 0.6)"
             underlineColorAndroid="transparent"
             onChangeText={(text) => this.setState({text})}
             value={this.state.text}
